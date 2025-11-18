@@ -300,8 +300,9 @@ if(students.isEmpty()){
   Integer ratingSelected = menu.selectItemFromArray("Choose a rating: ", selected.getRatings());
   Rating tempRating = selected.getRatings()[ratingSelected];
   Comment rating = tempRating.getReview();
+  int level = 0;
   while(true){
-   printExpandedComments(rating, 0);
+   printExpandedComments(rating, level);
    String choise = menu.getString("Make a selection! (R)eply, (U)p, (D)own, (M)ain Menu: ");
    if(choise.equalsIgnoreCase("M")){
     return;
@@ -321,6 +322,7 @@ if(students.isEmpty()){
    if(choise.equalsIgnoreCase("U")){
     if(rating.getInReplyTo()!=null){
      rating=rating.getInReplyTo();
+     level--;
     }else{
      System.out.println("Already at the top!\n");
     }
@@ -332,6 +334,7 @@ if(students.isEmpty()){
     if(rating.numReplies()!=0){
      int index1 = menu.getInt("Select a comment index to move to: ");
      rating=rating.getReply(index1);
+     level++;
     }
    }
   }

@@ -39,7 +39,7 @@ public class Comment{
   if(!replies.isEmpty()){
     s.append("\nReplies:\n");
     for(int i=0; i<replies.size(); ++i){
-     s.append(i).append(": ").append(replies.get(i).author.getName()).append("\n");
+     s.append(i).append(": ").append(replies.get(i).author.getName()+text).append("\n");
     }
   }
   return s.toString();
